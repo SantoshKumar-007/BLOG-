@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog Home</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <nav class="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="logo">MyBlog</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="create.html">Create Post</a></li>
+    </ul>
+    
+</nav>
+
+
+  <h1 style="text-align:center;">All Blog Posts</h1>
+  <div id="posts"></div>
+
+  <script>
+    
+    fetch('http://localhost:3000/api/posts')
+      .then(res => res.json())
+      .then(data => {
+        const container = document.getElementById('posts');
+        data.forEach(post => {
+          const div = document.createElement('div');
+          div.classList.add('card');
+          div.innerHTML = `
+            <h2>${post.title}</h2>
+            <p><strong>Author:</strong> ${post.author}</p>
+            <p>${post.content.substring(0, 100)}...</p>
+            <a href="view.html?id=${post.id}" class="read-more">Read More.</a>
+          `;
+          container.appendChild(div);
+        });
+      });
+  </script>
+</body>
+</html>

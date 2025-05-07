@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Post</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+          <a href="index.html" class="logo">MyBlog</a>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="create.html">Create Post</a></li>
+          </ul>
+          <div class="hamburger" onclick="toggleMenu()">☰bb</div>
+        </div>
+        <div id="dropdown-menu" class="dropdown-menu">
+          <!-- Blog titles will be added here by JS -->
+        </div>
+      </nav>
+      
+  <div id="post"></div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    fetch(`http://localhost:3000/api/posts/${id}`)
+      .then(res => res.json())
+      .then(post => {
+        document.getElementById('post').innerHTML = `
+          <h1>${post.title}</h1>
+          <p>by ${post.author}</p>
+          <p>${post.content}</p>
+          <a href="edit.html?id=${post.id}">Edit</a>
+        `;
+      });
+  </script>
+</body>
+</html>

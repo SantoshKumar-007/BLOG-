@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head><title>Edit Post</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+          <a href="index.html" class="logo">MyBlog</a>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="create.html">Create Post</a></li>
+          </ul>
+          <div class="hamburger" onclick="toggleMenu()">☰</div>
+        </div>
+        <div id="dropdown-menu" class="dropdown-menu">
+          <!-- Blog titles will be added here by JS -->
+        </div>
+      </nav>
+      
+  <h1>Edit Blog Post</h1>
+  <form id="editForm">
+    <input type="text" id="title" required><br>
+    <input type="text" id="author" required><br>
+    <textarea id="content" required></textarea><br>
+    <button type="submit">Update</button>
+  </form>
+
+  <script>
+    const id = new URLSearchParams(window.location.search).get('id');
+    fetch(`http://localhost:3000/api/posts/${id}`)
+      .then(res => res.json())
+      .then(post => {
+        document.getElementById('title').value = post.title;
+        document.getElementById('author').value = post.author;
+        document.getElementById('content').value = post.content;
+      });
+
+    document.getElementById('editForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      fetch(`http://localhost:3000/api/posts/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: document.getElementById('title').value,
+          content: document.getElementById('content').value,
+          author: document.getElementById('author').value
+        })
+      })
+      .then(res => res.json())
+      .then(() => {
+        alert('Post updated!');
+        window.location.href = `view.html?id=${id}`;
+      });
+    });
+  </script>
+</body>
+</html>

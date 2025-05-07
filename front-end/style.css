@@ -1,0 +1,225 @@
+/* General styling */
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  background-image: url('https://img.freepik.com/free-vector/modern-soft-brown-watercolor-texture-beautiful-background-design_1055-20513.jpg?ga=GA1.1.1486838047.1746269267&semt=ais_hybrid&w=740');
+  background-size: cover;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-top: 20px;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form textarea {
+  height: 150px;
+}
+
+form {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+form button {
+  width: 100%;
+  font-size: 18px;
+}
+
+/* Navbar styling */
+.navbar {
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+
+  color: white;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #00bcd4;
+}
+
+
+/* Blog card grid */
+#posts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+@media (max-width: 992px) {
+  #posts {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  #posts {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Blog post card */
+.card {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  border: none;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+/* Title styling */
+.card h2 {
+  font-size: 22px;
+  margin: 0 0 10px;
+  color: #222;
+}
+
+/* Author info */
+.card p.author {
+  font-style: italic;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Excerpt styling (optional short preview) */
+.card p.excerpt {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+  margin-bottom: 15px;
+}
+
+/* Link styling */
+.read-more {
+  align-self: flex-start;
+  padding: 8px 12px;
+  background-color: #0077cc;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.read-more:hover {
+  background-color: #005fa3;
+}
+
+
+
+
+
+/* Single blog post view */
+#post {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 20px auto;
+}
+
+#post h1 {
+  font-size: 24px;
+}
+
+#post p {
+  font-size: 18px;
+  color: #555;
+}
+
+#post a {
+  display: inline-block;
+  margin-top: 20px;
+  color: #007bff;
+}
+
+#post a:hover {
+  text-decoration: underline;
+}

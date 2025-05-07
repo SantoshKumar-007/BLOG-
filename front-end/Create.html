@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create Post</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+          <a href="index.html" class="logo">MyBlog</a>
+          <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="create.html">Create Post</a></li>
+          </ul>
+          <div class="hamburger" onclick="toggleMenu()">☰</div>
+        </div>
+        <div id="dropdown-menu" class="dropdown-menu">
+          <!-- Blog titles will be added here by JS -->
+        </div>
+      </nav>
+      
+  <h1>Create Blog Post</h1>
+  <form id="postForm">
+    <input type="text" id="title" placeholder="Title" required><br>
+    <input type="text" id="author" placeholder="Author" required><br>
+    <textarea id="content" placeholder="Content" required></textarea><br>
+    <button type="submit" id="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('postForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      fetch('http://localhost:3000/api/posts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          title: document.getElementById('title').value,
+          content: document.getElementById('content').value,
+          author: document.getElementById('author').value
+        })
+      })
+      .then(res => res.json())
+      .then(data => {
+        alert('Post created!');
+        window.location.href = 'index.html';
+      });
+    });
+  </script>
+</body>
+</html>
